@@ -31,6 +31,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'pivot'
     ];
 
     /**
@@ -48,6 +49,6 @@ class User extends Authenticatable
 
     public function games()
     {
-        return $this->belongsToMany(Game::class, "games_library", "user_id", "game_id");
+        return $this->belongsToMany(Game::class, "games_library", "user_id", "game_id")->withTimestamps();
     }
 }

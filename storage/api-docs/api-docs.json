@@ -226,6 +226,23 @@
                 }
             }
         },
+        "/api/library/{$user_id}": {
+            "get": {
+                "tags": [
+                    "Biblioteca"
+                ],
+                "summary": "Lista todos os jogos do usuário na biblioteca",
+                "operationId": "7f250f91016944d178db4b8b096c4175",
+                "responses": {
+                    "200": {
+                        "description": "Lista de jogos retornada com sucesso"
+                    },
+                    "400": {
+                        "description": "Jogos não encontrados"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
@@ -447,6 +464,10 @@
         {
             "name": "Games",
             "description": "Games"
+        },
+        {
+            "name": "Biblioteca",
+            "description": "Biblioteca"
         },
         {
             "name": "Usuários",
