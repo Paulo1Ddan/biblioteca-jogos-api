@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Game::class, "games_library", "user_id", "game_id");
+    }
 }

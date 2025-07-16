@@ -11,4 +11,9 @@ class Game extends Model
     use HasFactory;
 
     protected $fillable = ["title", "publisher", "release_date", "platforms"];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, "games_library", "game_id", "user_id");
+    }
 }

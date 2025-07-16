@@ -74,6 +74,158 @@
                 }
             }
         },
+        "/api/games/{id}": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Listar jogo pelo Id",
+                "operationId": "f0bce1dcff3d56d19826d671761a43ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do jogo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Jogo encontrado com sucesso"
+                    },
+                    "404": {
+                        "description": "Jogo não encontrados"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Atualizar o jogo",
+                "operationId": "7a7a51e92437ab9405a4bd9153eacec7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do jogo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "publisher",
+                                    "platforms",
+                                    "_method"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Hollow Knight"
+                                    },
+                                    "publisher": {
+                                        "type": "string",
+                                        "example": "Team Cherry"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "example": "2021-02-20"
+                                    },
+                                    "platforms": {
+                                        "type": "string",
+                                        "example": "Nintendo Switch, PS4, PS5, Xbox, PC"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "put"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Jogo atualizado com sucesso"
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "404": {
+                        "description": "Jogo não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro ao atualizar jogo"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Deletar jogo",
+                "operationId": "1b52414d7af18b35901add3451cba91c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do jogo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "_method"
+                                ],
+                                "properties": {
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "delete"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Jogo deletado com sucesso"
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "404": {
+                        "description": "Jogo não encontrados"
+                    },
+                    "500": {
+                        "description": "Erro ao deletar jogo"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
