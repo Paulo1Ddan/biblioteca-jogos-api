@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $users = User::all();
         if ($users->isEmpty()) {
-            return response()->json(["message" => "Usuários não encontrados"], 400);
+            return response()->json(["message" => "Usuários não encontrados"], 404);
         }
         return response()->json($users);
     }

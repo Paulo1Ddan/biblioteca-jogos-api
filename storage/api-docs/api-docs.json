@@ -6,6 +6,74 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/games": {
+            "get": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Lista todos os jogos",
+                "operationId": "93736f40a135111a310e4b25ad61f30b",
+                "responses": {
+                    "200": {
+                        "description": "Lista de jogos retornada com sucesso"
+                    },
+                    "400": {
+                        "description": "Jogos não encontrados"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Criar um novo jogo",
+                "operationId": "b8b9557618eb0f7b3650bdd4ab3a6487",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "publisher",
+                                    "platforms"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Hollow Knight"
+                                    },
+                                    "publisher": {
+                                        "type": "string",
+                                        "example": "Team Cherry"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "example": "2021-02-20"
+                                    },
+                                    "platforms": {
+                                        "type": "string",
+                                        "example": "Nintendo Switch, PS4, PS5, Xbox, PC"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Jogo criado com sucesso"
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "500": {
+                        "description": "Erro ao criar jogo"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
@@ -224,6 +292,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Games",
+            "description": "Games"
+        },
         {
             "name": "Usuários",
             "description": "Usuários"

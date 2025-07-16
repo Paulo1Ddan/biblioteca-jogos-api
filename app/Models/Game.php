@@ -9,4 +9,6 @@ class Game extends Model
 {
     /** @use HasFactory<\Database\Factories\GameFactory> */
     use HasFactory;
+
+    protected $fillable = ["title", "publisher", "release_date", "platforms"];
 }

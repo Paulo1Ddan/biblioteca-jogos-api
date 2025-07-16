@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.4.10-fpm-alpine3.22
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsqlite3-dev \
@@ -12,7 +12,7 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-RUN composer install --no-dev --optimize-autoloadera
+RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database

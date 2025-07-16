@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->string("title");
+            $table->string("publisher", 100);
+            $table->date("release_date")->nullable();
+            $table->string("platforms");
             $table->timestamps();
         });
     }
