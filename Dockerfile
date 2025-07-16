@@ -1,4 +1,4 @@
-FROM php:8.4.10-fpm-alpine3.22
+FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsqlite3-dev \
@@ -17,10 +17,6 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 
-RUN a2enmod rewrite
-
-RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
-
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+CMD ["php-fpm"]
