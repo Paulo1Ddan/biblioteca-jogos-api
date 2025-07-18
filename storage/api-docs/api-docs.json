@@ -243,6 +243,93 @@
                 }
             }
         },
+        "/api/library/add": {
+            "post": {
+                "tags": [
+                    "Biblioteca"
+                ],
+                "summary": "Adiciona o jogo a biblioteca",
+                "operationId": "c4565198c06fa04242afbfbd73b23c0a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "game_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "game_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Jogo adicionado a biblioteca"
+                    },
+                    "400": {
+                        "description": "O jogo já está presente na biblioteca"
+                    }
+                }
+            }
+        },
+        "/api/library/remove": {
+            "delete": {
+                "tags": [
+                    "Biblioteca"
+                ],
+                "summary": "Remove o jogo a biblioteca",
+                "operationId": "32b0b20bac1eb827dd0b496b95f071d3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "game_id",
+                                    "_method"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "game_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "_method": {
+                                        "type": "string",
+                                        "example": "delete"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Jogo removido a biblioteca"
+                    },
+                    "400": {
+                        "description": "Esse jogo não está na sua lista"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
